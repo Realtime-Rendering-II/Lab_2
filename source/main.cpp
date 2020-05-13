@@ -49,7 +49,7 @@ int main(int argc, const char *argv[]) {
             {255.0f / 255.0f, 255.0f / 255.0f, 160.0f / 255.0f},
             glm::mat4{1.0f}};
 
-    //TODO: create a second light source
+    //TODO 8: create a second light source
 
     Shader normal_shader = Shader{"../shader/textured.vert", "../shader/textured.frag"};
 
@@ -64,7 +64,7 @@ int main(int argc, const char *argv[]) {
         upload_lights_and_position(normal_shader.get_program(), sun);
 
         if (rotation) {
-            //TODO: implement that the sun rotates
+            //TODO 11: implement that one light source rotates (for this modify the model matrix of the light)
         }
 
         earth->draw(normal_shader.get_program());
@@ -108,7 +108,7 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
     }
 
     if (key == GLFW_KEY_2 && action == GLFW_PRESS) {
-        //TODO: if they key is pressed the shading model should change
+        //TODO 7: if this key is pressed the shading model should change
     }
 
     if (key == GLFW_KEY_W) {
@@ -180,11 +180,12 @@ void upload_lights_and_position(GLuint shader, Light* light) {
     glUniform3f(light_diffuse_color_location, light->diffuse_color.x, light->diffuse_color.y, light->diffuse_color.z);
     glUniform3f(camera_position_location, camera->Position.x, camera->Position.y, camera->Position.z);
 
-    //TODO: add necessary uploads to implement Blinn-Phong in the fragment shader
+    //TODO 1: add necessary uploads to implement Blinn-Phong in the fragment shader
 
-    //TODO: upload a second light source
+    //TODO 4: upload a boolean to specify which shading model (blinn-phong or phong) should be used
 
-    //TODO: upload a boolean to specify which shading model should be used
+    //TODO 9: upload the second light source
+
 }
 
 void initialize() {
